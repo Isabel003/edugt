@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Página de Inicio de Sesión</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Iniciar Sesión</h2>
+    <form class="login-form" id="login">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" required><br>
+
+        <label for="apellidos">Apellidos:</label>
+        <input type="text" id="apellidos" required><br>
+
+        <label for="edad">Edad:</label>
+        <input type="number" id="edad" required><br>
+
+        <label for="correo">Correo Electrónico:</label>
+        <input type="email" id="correo" required><br>
+
+        <label for="usuario">Usuario:</label>
+        <input type="text" id="usuario" required><br>
+
+        <label for="contrasena">Contraseña:</label>
+        <input type="password" id="contrasena" required><br>
+
+        <button type="button" onclick="iniciarSesion()">Iniciar Sesión</button>
+    </form>
+
+    <div id="cursos" style="display: none;">
+        <h3>Bienvenido, Alumno</h3>
+        <p>Aquí estarían los cursos disponibles...</p>
+    </div>
+</div>
+
+<script>
+    function iniciarSesion() {
+        var usuario = document.getElementById('usuario').value;
+        var contrasena = document.getElementById('contrasena').value;
+
+        if (usuario.toLowerCase() === 'alumno' && contrasena === '2023') {
+            window.location.href = 'cursos.html';
+        } else {
+            alert('Usuario o contraseña incorrectos. Acceso denegado.');
+        }
+    }
+</script>
+
+</body>
+</html>

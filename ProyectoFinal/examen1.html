@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen de Ciberseguridad</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Examen de Ciberseguridad</h1>
+    </header>
+
+  <main id="main-content">
+        <question>
+            <p><strong>Pregunta 1:</strong> ¿Cuál es el objetivo principal de la ciberseguridad?</p>
+            <label><input type="radio" name="q1" value="a"> a) Mejorar la velocidad de las conexiones de red.</label><br>
+            <label><input type="radio" name="q1" value="b"> b) Proteger sistemas informáticos contra amenazas y accesos no autorizados.</label><br>
+            <label><input type="radio" name="q1" value="c"> c) Desarrollar software más avanzado.</label>
+        </question>
+
+        <question id="q2">
+            <p><strong>Pregunta 2:</strong> ¿Qué función cumple un firewall en ciberseguridad?</p>
+            <label><input type="radio" name="q2" value="a"> a) Proteger contra virus.</label><br>
+            <label><input type="radio" name="q2" value="b"> b) Evitar accesos no autorizados.</label><br>
+            <label><input type="radio" name="q2" value="c"> c) Mejorar la velocidad de la red.</label>
+        </question>
+
+        <question id="q3">
+            <p><strong>Pregunta 3:</strong> ¿Qué es el phishing?</p>
+            <!-- Opciones de respuesta como listbox -->
+            <select name="q3">
+                <option value="a">a) Un tipo de malware.</option>
+                <option value="b">b) Un ataque que utiliza correos electrónicos fraudulentos para engañar a las personas y obtener información confidencial.</option>
+                <option value="c">c) Una forma de cifrar datos.</option>
+            </select>
+        </question>
+
+        <question id="q4">
+            <p><strong>Pregunta 4:</strong> ¿Por qué es importante la autenticación de dos factores?</p>
+            <label><input type="radio" name="q4" value="a"> a) Porque mejora la velocidad de la red.</label><br>
+            <label><input type="radio" name="q4" value="b"> b) Porque proporciona una capa adicional de seguridad al requerir más de una forma de verificación de identidad.</label><br>
+            <label><input type="radio" name="q4" value="c"> c) Porque protege contra virus.</label>
+        </question>
+
+         <question id="q5">
+            <p><strong>Pregunta 5:</strong> ¿Cuál es el propósito del cifrado de datos en ciberseguridad?</p>
+            <select name="q5">
+                <option value="a">a) Mejorar la velocidad de transmisión de datos.</option>
+                <option value="b">b) Proteger la confidencialidad de la información mediante la conversión de datos en un formato ilegible.</option>
+                <option value="c">c) Evitar la necesidad de actualizaciones de software.</option>
+            </select>
+        </question>
+ 
+
+   
+    <div class="calificar-button">
+        <button onclick="calificarExamen()">Calificar Examen</button>
+  </div>
+        <div class="results" id="results-container" style="display: none;">
+            <h3>Resultados del Examen</h3>
+            <p><strong>Preguntas correctas:</strong> <span id="correct-answers"></span></p>
+            <p><strong>Calificación:</strong> <span id="calificacion"></span></p>
+        </div>
+    </main>
+
+    <script>
+        function calificarExamen() {
+            const respuestasCorrectas = ['b', 'b', 'b', 'b', 'b'];
+            const respuestasSeleccionadas = [];
+
+            for (let i = 1; i <= 5; i++) {
+                const pregunta = document.querySelector(`input[name="q${i}"]:checked`);
+                if (pregunta) {
+                    respuestasSeleccionadas.push(pregunta.value);
+                }
+            }
+
+            let calificacion = 0;
+            for (let i = 0; i < respuestasCorrectas.length; i++) {
+                if (respuestasCorrectas[i] === respuestasSeleccionadas[i]) {
+                    calificacion++;
+                }
+            }
+
+            const resultsContainer = document.getElementById('results-container');
+            resultsContainer.style.display = 'block';
+
+            document.getElementById('correct-answers').innerText = calificacion;
+            document.getElementById('calificacion').innerText = `${calificacion} / 5`;
+        }
+    </script>
+</body>
+</html>

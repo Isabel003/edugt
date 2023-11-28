@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen de Bases de Datos</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Examen de Bases de Datos</h1>
+    </header>
+
+    <main id="main-content">
+        <question>
+            <p><strong>Pregunta 1:</strong> ¿¿Qué es la programación?</p>
+            <label><input type="radio" name="q1" value="a"> a) Un proceso para diseñar hardware de computadoras.</label><br>
+            <label><input type="radio" name="q1" value="b"> b) El proceso de diseñar, codificar y mantener el código fuente de un programa de computadora.</label><br>
+            <label><input type="radio" name="q1" value="c"> c) La creación de redes de computadoras.</label>
+        </question>
+
+        <question id="q2">
+            <p><strong>Pregunta 2:</strong> ¿Qué son los lenguajes de programación?</p>
+            <label><input type="radio" name="q2" value="a"> a) Idiomas hablados por programadores.</label><br>
+            <label><input type="radio" name="q2" value="b"> b) Conjuntos de instrucciones que una computadora puede entender, como Python, Java o C++.</label><br>
+            <label><input type="radio" name="q2" value="c"> c) Herramientas de depuración.</label>
+        </question>
+
+        <question id="q3">
+            <p><strong>Pregunta 3:</strong> ¿Cuál es el propósito de las estructuras de control en programación?</p>
+        
+            <select name="q3">
+                <option value="a">a) Organizar el código en carpetas.</option>
+                <option value="b">b) Controlar el flujo de ejecución del programa mediante bucles y condicionales.</option>
+                <option value="c">c) Definir variables.</option>
+            </select>
+        </question>
+
+        <question id="q4">
+            <p><strong>Pregunta 4:</strong> ¿Qué son las variables en programación?</p>
+            <label><input type="radio" name="q4" value="a">a) Conjuntos de instrucciones.</label><br>
+            <label><input type="radio" name="q4" value="b"> b) Elementos de hardware.</label><br>
+            <label><input type="radio" name="q4" value="c"> c) Espacios de almacenamiento para datos, como enteros, cadenas o booleanos.</label>
+        </question>
+
+         <question id="q5">
+            <p><strong>Pregunta 5:</strong> ¿Por qué es importante la modularidad en programación?</p>
+            <select name="q5">
+                <option value="a">a) Un modelo de datos.a) Porque hace que el código sea más largo y complejo.</option>
+                <option value="b">b) Porque mejora la reutilización del código y facilita el mantenimiento al dividir el código en funciones y procedimientos.</option>
+                <option value="c">c) Porque elimina la necesidad de algoritmos.</option>
+            </select>
+        </question>
+ 
+
+   
+    <div class="calificar-button">
+        <button onclick="calificarExamen()">Calificar Examen</button>
+  </div>
+        <div class="results" id="results-container" style="display: none;">
+            <h3>Resultados del Examen</h3>
+            <p><strong>Preguntas correctas:</strong> <span id="correct-answers"></span></p>
+            <p><strong>Calificación:</strong> <span id="calificacion"></span></p>
+        </div>
+    </main>
+
+    <script>
+        function calificarExamen() {
+            const respuestasCorrectas = ['b', 'b', 'b', 'c', 'b'];
+            const respuestasSeleccionadas = [];
+
+            for (let i = 1; i <= 5; i++) {
+                const pregunta = document.querySelector(`input[name="q${i}"]:checked`);
+                if (pregunta) {
+                    respuestasSeleccionadas.push(pregunta.value);
+                }
+            }
+
+            let calificacion = 0;
+            for (let i = 0; i < respuestasCorrectas.length; i++) {
+                if (respuestasCorrectas[i] === respuestasSeleccionadas[i]) {
+                    calificacion++;
+                }
+            }
+
+            const resultsContainer = document.getElementById('results-container');
+            resultsContainer.style.display = 'block';
+
+            document.getElementById('correct-answers').innerText = calificacion;
+            document.getElementById('calificacion').innerText = `${calificacion} / 5`;
+        }
+    </script>
+</body>
+</html>
